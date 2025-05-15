@@ -1,5 +1,18 @@
 # Terraform Sandbox
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Usage](#usage)
+  - [Clone the repository](#clone-the-repository)
+  - [Initialize Terraform](#initialize-terraform)
+  - [Apply the configuration](#apply-the-configuration)
+- [Customization](#customization)
+- [Cleanup](#cleanup)
+- [Contribution](#contribution)
+
 ## Overview
 
 This repository provides a Terraform sandbox template to experiment with Terraform configurations. It includes a local backend setup and a predefined structure to manage a simple dataset using Terraform locals. The sandbox can be extended to test additional Terraform features.
@@ -38,7 +51,7 @@ terraform apply
 
 This will output the predefined local dataset.
 
-4. Modify the `locals` block in `main.tf` to test different configurations.
+Modify the `locals` block in `main.tf` to test different configurations.
 
 ## Customization
 
