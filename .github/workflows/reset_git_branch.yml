@@ -7,26 +7,22 @@ jobs:
   reset-history:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Fetch all history for all branches
-
+      - uses: actions/checkout@v4
+      - name: Configure git user
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
       - name: Reset Git History
         run: |
           set -e
           NEW_BRANCH="latest_branch"
           git fetch origin
-          echo "Creating a new orphan branch: $NEW_BRANCH"
           git checkout --orphan "$NEW_BRANCH"
           git add -A
           git commit -m "Reset commit history"
           if git show-ref --verify --quiet refs/heads/main; then
-              echo "Deleting existing main branch"
               git branch -D main
           fi
-          echo "Renaming $NEW_BRANCH to main"
           git branch -m main
-          echo "Force pushing changes to remote repository"
           git push -f origin main
           echo "Git history reset successfully."
